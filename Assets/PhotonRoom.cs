@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PhotonRoom : MonoBehaviourPunCallbacks
 {
+    public static PhotonRoom instance;
     public TMP_InputField roomInput;
     public Transform roomContent;
     public UIRoomProfiles roomPrefabs;
@@ -14,7 +15,9 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        PhotonRoom.instance = this;
         this.roomInput.text = "Room 1";
+        this.UpdateRoomProfileUI();
     }
 
     public virtual void Creat()
@@ -28,7 +31,23 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
         string name = roomInput.text;
         Debug.Log(transform.name + ": Join room " + name);
         PhotonNetwork.JoinRoom(name);
-        this.ClearRoomProfileUI();
+        
+    }
+    public virtual void Leave()
+    {
+        Debug.Log(transform.name + ": Leave room ");
+        PhotonNetwork.LeaveRoom();
+    }
+    public virtual void OnClickStartGame()
+    {
+        Debug.Log(transform.name + ": Click Start Game");
+        if (PhotonNetwork.IsMasterClient) this.StartGame();
+        else Debug.LogWarning("You are not Master Client");
+    }
+    public virtual void StartGame()
+    {
+        Debug.Log(transform.name + ": Start Game");
+        PhotonNetwork.LoadLevel("Gameplay1");
     }
     public override void OnCreatedRoom()
     {
@@ -38,6 +57,8 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
     {
         //base.OnJoinedRoom();
         Debug.Log("OnJoinedRoom");
+        this.ClearRoomProfileUI();
+
     }
     public override void OnLeftRoom()
     {
@@ -46,8 +67,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
     }
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        //base.OnCreateRoomFailed(returnCode, message);
-        Debug.Log("OnCreateRoomFailed: " + message);
+        Debug.Log(transform.name + ": OnCreateRoomFailed: " + message);
     }
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
@@ -56,7 +76,6 @@ public class PhotonRoom : MonoBehaviourPunCallbacks
         this.updateRoom = roomList;
         foreach(RoomInfo roomInfo in roomList)
         {
-            Debug.Log("OnRoomListUpdate fore each");
             if (roomInfo.RemovedFromList) this.RoomRemove(roomInfo);
             else this.RoomAdd(roomInfo);
         }
