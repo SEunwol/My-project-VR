@@ -12,7 +12,7 @@
 #if UNITY_4_7 || UNITY_5 || UNITY_5_3_OR_NEWER
 #define SUPPORTED_UNITY
 #endif
-
+using System;
 
 namespace Photon.Realtime
 {
@@ -33,6 +33,7 @@ namespace Photon.Realtime
     /// This class resembles info about available rooms, as sent by the Master server's lobby.
     /// Consider all values as readonly. None are synced (only updated by events by server).
     /// </remarks>
+    [Serializable]
     public class RoomInfo
     {
         /// <summary>Used in lobby, to mark rooms that are no longer listed (for being full, closed or hidden).</summary>
