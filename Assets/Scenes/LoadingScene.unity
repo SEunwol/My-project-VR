@@ -4391,6 +4391,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 742909198, guid: 57e7812afd715fe4794145618997a54b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2461235070376845007, guid: 57e7812afd715fe4794145618997a54b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -4493,7 +4497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2461235071177794190, guid: 57e7812afd715fe4794145618997a54b, type: 3}
       propertyPath: m_Name
-      value: XR Origin
+      value: XROrigin
       objectReference: {fileID: 0}
     - target: {fileID: 2461235071177794190, guid: 57e7812afd715fe4794145618997a54b, type: 3}
       propertyPath: m_IsActive
@@ -4502,6 +4506,18 @@ PrefabInstance:
     - target: {fileID: 2461235071612289749, guid: 57e7812afd715fe4794145618997a54b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2542817131414821963, guid: 57e7812afd715fe4794145618997a54b, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2542817131414821963, guid: 57e7812afd715fe4794145618997a54b, type: 3}
+      propertyPath: m_fontSize
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030933756295497856, guid: 57e7812afd715fe4794145618997a54b, type: 3}
+      propertyPath: sceneViewId
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57e7812afd715fe4794145618997a54b, type: 3}

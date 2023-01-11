@@ -9,12 +9,13 @@ public class GameMenuController : MonoBehaviour
 {
     public GameObject gameMenu;
     public Transform headPlayer;
+    PhotonPlayer photonPlayer;
     public float spawnDistance = 2;
     public InputActionProperty showButton;
     // Start is called before the first frame update
     void Start()
     {
-        
+        photonPlayer = headPlayer.GetComponent<PhotonPlayer>();
     }
 
     // Update is called once per frame
